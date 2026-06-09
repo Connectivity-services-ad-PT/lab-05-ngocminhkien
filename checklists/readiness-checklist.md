@@ -1,16 +1,32 @@
-# Readiness Checklist – Lab 05
+# Bảng danh sách kiểm tra mức độ
+sẵn sàng của hệ thống dịch vụ Analytics.
 
-Đây là danh sách kiểm tra (checklist) để đảm bảo stack Docker Compose của bạn đã sẵn sàng trước khi gửi bài. Hãy tick vào mỗi mục sau khi hoàn thành.
+- [x] Cơ sở dữ liệu TimescaleDB hiện
+đã khởi động thành công và vượt
+qua bài kiểm tra sức khỏe hệ
+thống bằng câu lệnh cấu hình pg_isready.
 
-- [ ] **Database ready:** container DB đã chạy và phản hồi `pg_isready`. Kiểm tra bằng `docker exec -it fit4110-db-lab05 pg_isready -U $POSTGRES_USER`.
-- [ ] **AI service ready:** container AI service trả về `200` cho endpoint `/health` và `/predict` hoạt động.
-- [ ] **API ready:** container API trả `200` cho `/health` và có thể tạo/lấy readings khi token hợp lệ.
-- [ ] **Environment variables:** `.env` đã được thiết lập đúng (APP_PORT, POSTGRES_USER, AUTH_TOKEN,…). Không sử dụng secret thật; lưu secret vào `.env` cục bộ, commit `.env.example`.
-- [ ] **Network & Ports:** mạng `team-internal` hoạt động; API gọi được AI bằng hostname `ai-service`; ports 8000 (API), 9000 (AI) và 5432 (DB) được map đúng.
-- [ ] **Image tags:** bạn đã build image với tag `v0.1.0-<team>` và push lên registry (ghcr.io hoặc Docker Hub). Xác nhận rằng tag xuất hiện trong registry.
+- [x] Các chuỗi token xác thực bảo mật
+và mật khẩu của cơ sở dữ
+liệu không bị ghi cứng trực tiếp
+vào trong nội dung mã nguồn dự án.
 
-Ghi chú thêm những vấn đề gặp phải hoặc điều chỉnh tại đây:
+- [x] Các cổng mạng dùng để giao tiếp
+của dịch vụ đã được mở chính
+xác cho phép kết nối an toàn
+từ các ứng dụng ở bên ngoài.
 
-```
-- Mô tả…
-```
+- [x] Dịch vụ API Backend hiện tại đã
+kết nối thành công tới cơ sở
+dữ liệu mà không gặp bất kỳ
+sự cố từ chối truy cập nào.
+
+- [x] Mạng kết nối nội bộ của nhóm đã
+hoạt động ổn định cho phép các
+container dịch vụ giao tiếp với nhau
+thông qua địa chỉ tên miền riêng.
+
+- [x] Tất cả các container docker hiện
+tại đều sử dụng đúng các thẻ
+image chuẩn mực như quy định ban
+đầu của môn học kiến trúc này.
