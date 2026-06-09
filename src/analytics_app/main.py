@@ -3,6 +3,8 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from typing import Optional
 import uuid
+import psycopg2
+import os
 
 app = FastAPI(title="Smart Campus — Analytics Service Backend", version="1.0.0")
 
